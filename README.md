@@ -18,6 +18,14 @@ Here we summarize the steps replicate the work presented in the paper. The menti
     - Set cfg.is_dual_layer to True and cfg.has_dropout to False to obtain DuL-EAF-Fusion students
     - Set cfg.is_dual_layer to True and cfg.has_dropout to True to obtain DLDPO-EAF-Fusion students
 
+## Training Stages
+
+### Teachers
+TODO - Image + brief description
+### Adaptors
+TODO - Image + brief description
+### Students
+TODO - Image + brief description
 ## Citation
 If you use our work in your research, please cite with:
 
