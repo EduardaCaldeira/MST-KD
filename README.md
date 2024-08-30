@@ -21,6 +21,7 @@ Here we summarize the steps replicate the work presented in the paper. The menti
 ## Training Stages
 
 ### Teachers
+<img src="figures/teacher_optimization.pdf" width="400" align="right"> 
 TODO - Image + brief description
 ### Adaptors
 TODO - Image + brief description
