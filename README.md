@@ -21,12 +21,21 @@ Here we summarize the steps replicate the work presented in the paper. The menti
 ## Training Stages
 
 ### Teachers
-<img src="figures/teacher_optimization.pdf" width="400" align="right"> 
-TODO - Image + brief description
+<img src="figures/teacher_optimization.png" width="300" align="right"> 
+
+We use multiple teachers to distill knowledge to a student since specializing each teacher in distinguishing identities from a single ethnicity may facilitate the distillation of ethnicity-specific knowledge, boosting student performance and fairness. Hence, each of the four teachers was trained on the 7k identities of one of the considered ethnicities: African, Asian, Caucasian and Indian. These models are expected to perform better for identities from the ethnicity they were trained with since they are more familiar with their ethnicity-dependent attributes. To demonstrate that the effectiveness of the suggested approaches rely on the fact that information is being distilled from ethnicity-specialized teachers, a multi-teacher baseline was also trained on balanced subsets of the original dataset.
+
 ### Adaptors
-TODO - Image + brief description
+<img src="figures/adaptor_optimization.png" width="300" align="right">
+
+Since knowledge is being transferred from more than one teacher, there is the need to adapt the four teachers' feature spaces to a common multi-teacher space from where knowledge can be directly distilled to the student. This can be achieved by training an adaptor network that simultaneously projects values from the four hyperspheres to a common one. To consider the information extracted by the four teachers simultaneously, their embeddings are concatenated to form a 2048-D vector that is inputted to the adaptor backbone. This vector contains four 512-D blocks corresponding to the features extracted by the teacher trained with samples of each ethnicity. This means that all teacher outputs are similarly weighted when the input vector is appended but their projection to the new hypersphere is learned.
+
 ### Students
-TODO - Image + brief description
+<img src="figures/student_optimization.png" width="300" align="right"> 
+
+The knowledge of the multi-teacher space is integrated into the student's learning process by means of a KD loss, $L_{KD}$, which minimizes the MSE between the embeddings extracted by the student and the multi-teacher space. 
+
+The student models assessed in this study fall into two groups: students trained with KD and the ElasticArcFace loss (EAF-KD) and students trained with KD alone (a-KD). a-KD does not require access to the identity labels of the training data resulting in a more privacy-friendly setting.
 
 ## Final Models
 The models mentioned in the paper (teachers, adaptors and students) can be found [here](https://drive.google.com/file/d/1nqw7OuPGTW9hgWNE2q-GCCK904VtKkZh/view?usp=sharing).
@@ -35,5 +44,13 @@ The models mentioned in the paper (teachers, adaptors and students) can be found
 If you use our work in your research, please cite with:
 
 ```
-Soon
+@misc{caldeira2024mstkdmultiplespecializedteachers,
+      title={MST-KD: Multiple Specialized Teachers Knowledge Distillation for Fair Face Recognition}, 
+      author={Eduarda Caldeira and Jaime S. Cardoso and Ana F. Sequeira and Pedro C. Neto},
+      year={2024},
+      eprint={2408.16563},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2408.16563}, 
+}
 ```
