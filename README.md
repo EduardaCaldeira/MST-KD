@@ -28,7 +28,7 @@ TODO - Image + brief description
 TODO - Image + brief description
 
 ## Final Models
-The models mentioned in the paper (teachers, adaptors and students) can be found here.
+The models mentioned in the paper (teachers, adaptors and students) can be found [here](https://drive.google.com/file/d/1nqw7OuPGTW9hgWNE2q-GCCK904VtKkZh/view?usp=sharing).
 
 ## Citation
 If you use our work in your research, please cite with:
